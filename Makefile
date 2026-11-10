@@ -1,7 +1,20 @@
 NAME= push_swap
 CC= cc
 CFLAGS= -Werror -Wall -Wextra
-SRCS= push_swap.c
+SRCS= mandatory_part/push_swap.c \
+              mandatory_part/parse_args.c \
+              mandatory_part/ft_atoi.c \
+              helper_functions/swap.c \
+              helper_functions/push.c \
+              helper_functions/rotate.c \
+              helper_functions/reverse_rotate.c \
+              helper_functions/list_utils.c \
+              helper_functions/is_sorted.c \
+              helper_functions/assign_index.c \
+              Simple_algorithm/selection_sort.c \
+              Medium_algorithm/chunk_sort.c \
+              Complex_algorithm/radix_sort.c \
+              adaptive_algorithm/adaptive.c
 OBJS= $(SRCS:.c=.o)
 HEADER= push_swap.h
 

@@ -6,7 +6,7 @@
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:43:25 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 17:14:43 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/10 11:51:10 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 typedef struct s_node
 {
 	int				value;
-	int				index;
 	struct s_node	*next;
 }	t_node;
 
