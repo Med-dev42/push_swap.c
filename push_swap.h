@@ -6,7 +6,7 @@
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:43:25 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/10 16:56:11 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/11 17:16:10 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
 void	selection_sort(t_node **a, t_node **b);
+
+void	push_numbergroup_to_a(t_node **a, t_node **b);
+int		calculator_n(int n);
+int		list_size(t_node *a);
 
 #endif
