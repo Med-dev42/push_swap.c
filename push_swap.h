@@ -6,7 +6,7 @@
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 10:43:25 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/10 11:51:10 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/10 16:56:11 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;
 
@@ -40,5 +41,7 @@ void	reverse_rotate(t_node **x);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
+
+void	selection_sort(t_node **a, t_node **b);
 
 #endif

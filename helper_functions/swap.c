@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_nbrs.c                                        :+:      :+:    :+:   */
+/*   swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 13:57:33 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 16:25:17 by mlazar           ###   ########.fr       */
+/*   Created: 2026/11/09 13:20:57 by mlazar            #+#    #+#             */
+/*   Updated: 2026/11/09 16:25:47 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	push(t_node **src, t_node **dst)
+void	swap(t_node **n)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
 
-	if (!src || !*src)
+	if (!*n || !(*n)->next)
 		return ;
-	tmp = *src;
-	*src = tmp->next;
-	tmp->next = *dst;
-	*dst = tmp;
+	first = *n;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*n = second;
 }
 
-void	pa(t_node **a, t_node **b)
+void	sa(t_node **a)
 {
-	push(b, a);
-	write(1, "pa\n", 3);
+	swap(a);
+	write(1, "sa\n", 3);
 }
 
-void	pb(t_node **a, t_node **b)
+void	sb(t_node **b)
 {
-	push(a, b);
-	write(1, "pb\n", 3);
+	swap(b);
+	write(1, "sb\n", 3);
+}
+
+void	ss(t_node **a, t_node **b)
+{
+	swap(a);
+	swap(b);
+	write(1, "ss\n", 3);
 }
