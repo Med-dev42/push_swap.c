@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:20:57 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 16:25:47 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/15 10:03:43 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	swap(t_node **n)
 	t_node	*first;
 	t_node	*second;
 
-	if (!*n || !(*n)->next)
+	if (!n || !*n || !(*n)->next)
 		return ;
 	first = *n;
 	second = first->next;
@@ -26,21 +26,24 @@ void	swap(t_node **n)
 	*n = second;
 }
 
-void	sa(t_node **a)
+void	sa(t_logic *c)
 {
-	swap(a);
+	swap(&c->a);
+	c->count[SA]++;
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b)
+void	sb(t_logic *c)
 {
-	swap(b);
+	swap(&c->b);
+	c->count[SB]++;
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_logic *c)
 {
-	swap(a);
-	swap(b);
+	swap(&c->a);
+	swap(&c->b);
+	c->count[SS]++;
 	write(1, "ss\n", 3);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:57:33 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 16:25:17 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/15 10:40:02 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ void	push(t_node **src, t_node **dst)
 	*dst = tmp;
 }
 
-void	pa(t_node **a, t_node **b)
+void	pa(t_logic *c)
 {
-	push(b, a);
+	push(&c->b, &c->a);
+	c->count[PA]++;
 	write(1, "pa\n", 3);
 }
 
-void	pb(t_node **a, t_node **b)
+void	pb(t_logic *c)
 {
-	push(a, b);
+	push(&c->a, &c->b);
+	c->count[PB]++;
 	write(1, "pb\n", 3);
 }

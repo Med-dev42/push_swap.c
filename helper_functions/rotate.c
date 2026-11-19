@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                      :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 15:02:08 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 16:23:49 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/15 10:06:11 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rotate(t_node **c)
 	t_node	*first;
 	t_node	*last;
 
-	if (!*c || !(*c)->next || !c)
+	if (!c || !*c || !(*c)->next)
 		return ;
 	first = *c;
 	*c = first->next;
@@ -28,21 +28,24 @@ void	rotate(t_node **c)
 	first->next = NULL;
 }
 
-void	ra(t_node **a)
+void	ra(t_logic *c)
 {
-	rotate(a);
+	rotate(&c->a);
+	c->count[RA]++;
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b)
+void	rb(t_logic *c)
 {
-	rotate(b);
+	rotate(&c->b);
+	c->count[RB]++;
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_logic *c)
 {
-	rotate(a);
-	rotate(b);
+	rotate(&c->a);
+	rotate(&c->b);
+	c->count[RR]++;
 	write(1, "rr\n", 3);
 }

@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk-based.c                                      :+:      :+:    :+:   */
+/*   chunk_based.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 14:48:26 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/11 17:11:23 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/15 10:20:57 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	give_index(t_node *a)
+int	square_root(int n)
 {
-	t_node	*head;
-	t_node	*other;
-	int		count;
+	int	i;
 
-	if (!a)
-		return ;
-	head = a;
-	while (a)
-	{
-		count = 0;
-		other = head;
-		while (other)
-		{
-			if (other->value < a->value)
-				count++;
-			other = other->next;
-		}
-		a->index = count;
-		a = a->next;
-	}
+	i = 0;
+	while ((i + 1) * (i + 1) <= n)
+		i++;
+	return (i);
 }
 
 int	found_bigger_b(t_node *b)
@@ -60,51 +46,51 @@ int	found_bigger_b(t_node *b)
 	return (index);
 }
 
-void	push_numbergroup_to_b(t_node **a, t_node **b, int chunk)
+void	push_numbergroup_to_b(t_logic *c, int chunk)
 {
 	int	pushed;
 
 	pushed = 0;
-	while (*a)
+	while (c->a)
 	{
-		if ((*a)->index < pushed + chunk)
+		if (c->a->index < pushed + chunk)
 		{
-			pb(a, b);
-			if ((*b)->index < pushed)
-				rb(b);
+			pb(c);
+			if (c->b->index < pushed)
+				rb(c);
 			pushed++;
 		}
 		else
-			ra(a);
+			ra(c);
 	}
 }
 
-void	push_numbergroup_to_a(t_node **a, t_node **b)
+void	push_numbergroup_to_a(t_logic *c)
 {
 	int	size;
 	int	bigger;
 
-	while (*b)
+	while (c->b)
 	{
-		size = stack_size(*b);
-		bigger = found_bigger_b(*b);
+		size = size_list(c->b);
+		bigger = found_bigger_b(c->b);
 		if (bigger <= size / 2)
 		{
 			while (bigger-- > 0)
-				rb(b);
+				rb(c);
 		}
 		else
 		{
 			while (bigger++ < size)
-				rrb(b);
+				rrb(c);
 		}
-		pa(a, b);
+		pa(c);
 	}
 }
 
-void	chunk_sort(t_node **a, t_node **b)
+void	chunk_sort(t_logic *c)
 {
-	give_index(*a);
-	push_numbergroup_to_b(a, b, calculator_n(stack_size(*a)));
-	push_numbergroup_to_a(a, b);
+	give_node_index(c->a);
+	push_numbergroup_to_b(c, square_root(size_list(c->a)));
+	push_numbergroup_to_a(c);
 }

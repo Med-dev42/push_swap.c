@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help_funs.c                                        :+:      :+:    :+:   */
+/*   add_back.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/11 17:08:03 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/11 17:12:16 by mlazar           ###   ########.fr       */
+/*   Created: 2026/11/13 07:52:21 by mlazar            #+#    #+#             */
+/*   Updated: 2026/11/13 08:00:07 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	calculator_n(int n)
+void	add_back(t_node **node, t_node *new)
 {
-	int	chunk;
+	t_node	*last;
 
-	if (n <= 100)
-		chunk = n / 5;
-	else
-		chunk = n / 15;
-	if (chunk < 1)
-		chunk = 1;
-	return (chunk);
-}
-
-int	list_size(t_node *a)
-{
-	int	len;
-
-	if (!a)
-		return (0);
-	len = 0;
-	while (a)
+	if (!node || !new)
+		return ;
+	if (!*node)
 	{
-		len++;
-		a = a->next;
+		*node = new;
+		return ;
 	}
-	return (len);
+	last = *node;
+	while (last->next)
+		last = last->next;
+	last->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: mlazar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 16:18:08 by mlazar            #+#    #+#             */
-/*   Updated: 2026/11/09 17:12:36 by mlazar           ###   ########.fr       */
+/*   Updated: 2026/11/15 10:10:00 by mlazar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,24 @@ void	reverse_rotate(t_node **x)
 	pre_last->next = NULL;
 }
 
-void	rra(t_node **a)
+void	rra(t_logic *c)
 {
-	reverse_rotate(a);
+	reverse_rotate(&c->a);
+	c->count[RRA]++;
 	write(1, "rra\n", 4);
 }
 
-void	rrb(t_node **b)
+void	rrb(t_logic *c)
 {
-	reverse_rotate(b);
+	reverse_rotate(&c->b);
+	c->count[RRB]++;
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_node **a, t_node **b)
+void	rrr(t_logic *c)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
+	reverse_rotate(&c->a);
+	reverse_rotate(&c->b);
+	c->count[RRR]++;
 	write(1, "rrr\n", 4);
 }
